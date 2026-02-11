@@ -17,7 +17,7 @@ public class ProductController {
         this.repository = repository;
     }
 
-    // 1️⃣ POST - Create Product
+    // POST - Create Product
     @PostMapping
     public Product createProduct(@RequestBody Product product) {
         return repository.save(product);
@@ -28,20 +28,20 @@ public class ProductController {
         return repository.saveAll(products);
     }
 
-    // 2️⃣ GET - Get All Products
+    // GET - Get All Products
     @GetMapping
     public List<Product> getAllProducts() {
         return repository.findAll();
     }
 
-    // 3️⃣ GET by ID
+    // GET by ID
     @GetMapping("/{id}")
     public Product getProductById(@PathVariable Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
     }
 
-    // 4️⃣ DELETE
+    // DELETE by ID
     @DeleteMapping("/{id}")
     public String deleteProduct(@PathVariable Long id) {
         repository.deleteById(id);
